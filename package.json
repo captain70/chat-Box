@@ -2,6 +2,7 @@
   "name": "chat-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@react-md/badge": "^5.1.3",
     "@react-md/theme": "^5.1.3",
