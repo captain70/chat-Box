@@ -11,6 +11,7 @@ import IndividualChats from './IndividualChats';
 import io from 'socket.io-client';
 import { useRef } from 'react';
 import { GoPrimitiveDot } from 'react-icons/go';
+import { messagesRoute } from '../utils/ApiRoutes';
 
 const ENDPOINT = process.env.REACT_APP_API;
 var selectedChatCompare;
@@ -38,7 +39,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 			setLoading(true);
 
 			const { data } = await axios.get(
-				`/api/message/${selectedChat._id}`,
+				`${messagesRoute}/${selectedChat._id}`,
 				config
 			);
 
@@ -62,7 +63,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 			};
 			setNewMessage('');
 			const { data } = await axios.post(
-				'/api/message',
+				messagesRoute,
 				{
 					content: newMessage,
 					chatId: selectedChat._id,
@@ -122,7 +123,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
 		return online ? true : false;
 	};
-
+	// console.log(activeUsers);
 	return (
 		<>
 			{selectedChat ? (

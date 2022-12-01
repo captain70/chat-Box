@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ChatState } from '../context/ChatProvider';
 import axios from 'axios';
 import { getSender } from '../config/ChatLogics';
+import { chatRoute } from '../utils/ApiRoutes';
 
 const ChatList = ({ fetchAgain }) => {
 	const [loggedUser, setLoggedUser] = useState();
@@ -18,7 +19,7 @@ const ChatList = ({ fetchAgain }) => {
 				},
 			};
 
-			const { data } = await axios.get('/api/chat', config);
+			const { data } = await axios.get(chatRoute, config);
 
 			setChats(data);
 		} catch (error) {

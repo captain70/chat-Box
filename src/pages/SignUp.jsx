@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { registerRoute } from '../utils/ApiRoutes';
 
 const SignUp = () => {
 	const [email, setEmail] = useState('');
@@ -79,8 +80,9 @@ const SignUp = () => {
 					'Content-type': 'application/json',
 				},
 			};
+
 			const { data } = await axios.post(
-				'/api/user/register',
+				registerRoute,
 				{
 					name,
 					email,

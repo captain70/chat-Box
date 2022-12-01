@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { loginRoute } from '../utils/ApiRoutes';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -36,7 +37,7 @@ const Login = () => {
 			};
 
 			const { data } = await axios.post(
-				'/api/user/login',
+				loginRoute,
 				{ email, password },
 				config
 			);

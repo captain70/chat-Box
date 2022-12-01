@@ -11,6 +11,7 @@ import UserListItem from './UserListItem';
 // import { render } from 'react-dom';
 import { Badge } from '@react-md/badge';
 import { getSender } from '../config/ChatLogics';
+import { chatRoute, searchRoute } from '../utils/ApiRoutes';
 
 const SearchSlider = () => {
 	const [search, setSearch] = useState('');
@@ -55,7 +56,10 @@ const SearchSlider = () => {
 					Authorization: `Bearer ${user.user.token}`,
 				},
 			};
-			const { data } = await axios.get(`/api/user?search=${search}`, config);
+			const { data } = await axios.get(
+				`${searchRoute}?search=${search}`,
+				config
+			);
 
 			setLoading(false);
 			setSearchResult(data.users);
@@ -75,7 +79,7 @@ const SearchSlider = () => {
 					Authorization: `Bearer ${user.user.token}`,
 				},
 			};
-			const { data } = await axios.post(`/api/chat`, { userId }, config);
+			const { data } = await axios.post(chatRoute, { userId }, config);
 
 			if (!chats.find((chat) => chat._id === data._id)) {
 				setChats([data, ...chats]);
